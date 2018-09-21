@@ -1,0 +1,20 @@
+'atom-text-editor':
+  'ctrl-alt-x': 'ruby-syntax-replacer:replace'
+  'shift-alt-r': 'editor:delete-line'
+  'shift-cmd-j': 'pretty-json:prettify'
+  'shift-cmd-f': 'code-search:toggle'
+
+'atom-workspace':
+  'ctrl-alt right': 'move-panes:move-right'
+  'ctrl-alt left': 'move-panes:move-left'
+  'ctrl-alt up': 'move-panes:move-up'
+  'ctrl-alt down': 'move-panes:move-down'
+
+'body':
+  'ctrl-tab': 'pane:show-next-item'
+  'ctrl-tab ^ctrl': 'unset!'
+  'ctrl-shift-tab': 'pane:show-previous-item'
+  'ctrl-shift-tab ^ctrl': 'unset!'
+
+'atom-text-editor[data-grammar~="ruby"]':
+  'alt-r': 'rubocop-auto-correct:current-file'
