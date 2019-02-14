@@ -141,7 +141,7 @@ module.exports = {
       size: 1,
       tray: false,
       unique: true
-	},
+    },
   },
 
   plugins: [
