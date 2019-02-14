@@ -1,5 +1,3 @@
-
-
 // Future versions of Hyper may add additional config options,
 // which will not automatically be merged into this file.
 // See https://hyper.is#cfg for all currently supported options.
@@ -11,7 +9,7 @@ module.exports = {
     updateChannel: 'stable',
 
     // default font size in pixels for all tabs
-    fontSize: 13,
+    fontSize: 12,
 
     // font family with optional fallbacks
     fontFamily: 'Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
@@ -21,6 +19,12 @@ module.exports = {
 
     // font weight for bold characters: 'normal' or 'bold'
     fontWeightBold: 'bold',
+
+    // line height as a relative unit
+    lineHeight: 1,
+
+    // letter spacing as a relative unit
+    letterSpacing: 0,
 
     // terminal cursor background color and opacity (hex, rgb, hsl, hsv, hwb or cmyk)
     cursorColor: 'rgba(248,28,229,0.8)',
@@ -125,32 +129,49 @@ module.exports = {
     // bellSoundURL: 'http://example.com/bell.mp3',
 
     // for advanced config flags please refer to https://hyper.is/#cfg
-    
+
+    // overlay: {
+    //   alwaysOnTop: true,
+    //   animate: false,
+    //   hasShadow: false,
+    //   hideDock: false,
+    //   hideOnBlur: false,
+    //   hotkeys: ['Ctrl+`'],
+    //   position: 'top',
+    //   primaryDisplay: false,
+    //   resizable: true,
+    //   startAlone: false,
+    //   startup: false,
+    //   size: 1,
+    //   tray: false,
+    //   unique: true
+    // },
+
     overlay: {
-      alwaysOnTop: true,
       animate: false,
-      hasShadow: false,
-      hideDock: false,
-      hideOnBlur: false,
-      hotkeys: ['Ctrl+`'],
-      position: 'top',
-      primaryDisplay: false,
-      resizable: true,
-      startAlone: false,
-      startup: false,
-      size: 1,
+      resizable: false,
       tray: false,
-      unique: true
-    },
+      unique: true,
+      size: {
+        height: 1,
+        width: 1
+      }
+    }
   },
 
+  // a list of plugins to fetch and install from npm
+  // format: [@org/]project[#version]
+  // examples:
+  //   `hyperpower`
+  //   `@company/project`
+  //   `project#1.0.1`
   plugins: [
-    'hypercwd',
-    'hyperterm-overlay',
-    'hyper-solarized-dark',
-    'hyperterm-dibdabs',
-    'hyper-tab-icons',
-    "hyper-search"
+    "hyper-overlay",
+    "hypercwd",
+    "hyper-search",
+    "hyperterm-dibdabs",
+    "hyper-solarized-dark2",
+    "hyper2-border"
   ],
 
   // in development, you can create a directory under
