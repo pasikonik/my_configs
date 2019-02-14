@@ -130,23 +130,6 @@ module.exports = {
 
     // for advanced config flags please refer to https://hyper.is/#cfg
 
-    // overlay: {
-    //   alwaysOnTop: true,
-    //   animate: false,
-    //   hasShadow: false,
-    //   hideDock: false,
-    //   hideOnBlur: false,
-    //   hotkeys: ['Ctrl+`'],
-    //   position: 'top',
-    //   primaryDisplay: false,
-    //   resizable: true,
-    //   startAlone: false,
-    //   startup: false,
-    //   size: 1,
-    //   tray: false,
-    //   unique: true
-    // },
-
     overlay: {
       animate: false,
       resizable: false,
