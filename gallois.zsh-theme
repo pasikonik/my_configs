@@ -24,7 +24,7 @@ function ruby_prompt_version {
 
 function elixir_prompt_version {
   if which elixir &> /dev/null; then
-    echo "%{$fg[magenta]%}[v$(elixir -v | rg -oP '(?<=Elixir )[^ ]*')]%{$reset_color%}"
+    echo "%{$fg[cyan]%}[v$(elixir -v | rg -oP '(?<=Elixir )[^ ]*')]%{$reset_color%}"
   fi
 }
 
