@@ -22,11 +22,17 @@ function ruby_prompt_version {
   echo "$(ruby_prompt_info | sed 's/ruby-/v/')"
 }
 
+function elixir_prompt_version {
+  if which elixir &> /dev/null; then
+    echo "%{$fg[magenta]%}[v$(elixir -v | rg -oP '(?<=Elixir )[^ ]*')]%{$reset_color%}"
+  fi
+}
+
 # RVM component of prompt
 ZSH_THEME_RVM_PROMPT_PREFIX="%{$fg[red]%}["
 ZSH_THEME_RVM_PROMPT_SUFFIX="]%{$reset_color%}"
 
 # Combine it all into a final right-side prompt
-RPS1='$(git_custom_status)$(node_prompt_version)$(ruby_prompt_version)[%D{%H:%M:%S}] $EPS1'
+RPS1='$(git_custom_status)$(node_prompt_version)$(ruby_prompt_version)$(elixir_prompt_version)[%D{%H:%M:%S}] $EPS1'
 
 PROMPT='%{$fg[cyan]%}[%~% ]%(?.%{$fg[green]%}.%{$fg[red]%})%B$%b '
