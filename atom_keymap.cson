@@ -15,6 +15,7 @@
   'ctrl-tab ^ctrl': 'unset!'
   'ctrl-shift-tab': 'pane:show-previous-item'
   'ctrl-shift-tab ^ctrl': 'unset!'
+  'ctrl-cmd-w': 'pane:close-other-items'
 
 'atom-text-editor[data-grammar~="ruby"]':
   'alt-r': 'rubocop-auto-correct:current-file'
