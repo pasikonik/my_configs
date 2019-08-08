@@ -1,0 +1,9 @@
+'.source.ruby':
+  'byebug':
+    'prefix': 'bb'
+    'body': 'byebug'
+
+'.source.js':
+  'debugger':
+    'prefix': 'de'
+    'body': 'debugger'
