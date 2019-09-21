@@ -1,0 +1,11 @@
+plugins=(
+  git
+  ruby
+  bundler
+  nvm
+  node
+  yarn
+  systemd
+  ember-cli
+  archlinux
+)
