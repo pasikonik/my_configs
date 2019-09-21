@@ -1,0 +1,12 @@
+alias r="rails"
+alias rs="rails server"
+alias rc="rails console"
+alias ru="rubocop"
+alias e="ember"
+alias yasu='yay -Syu --noconfirm'
+alias y="yarn"
+alias n="npm"
+alias bn="babel-node"
+alias gtfo="rm -rf node_modules dist tmp && yarn install"
+alias v="vue"
+alias ys="yarn serve"
