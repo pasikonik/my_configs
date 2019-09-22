@@ -19,12 +19,9 @@ function node_prompt_version {
 }
 
 function ruby_prompt_version {
-  echo "$(ruby_prompt_info | sed 's/ruby-/v/')"
+  echo "%{$fg[red]%}$(ruby_prompt_info | sed 's/(ruby-/[v/' | sed 's/)/]/' )%{$reset_color%}"
 }
 
-# RVM component of prompt
-ZSH_THEME_RVM_PROMPT_PREFIX="%{$fg[red]%}["
-ZSH_THEME_RVM_PROMPT_SUFFIX="]%{$reset_color%}"
 
 # Combine it all into a final right-side prompt
 RPS1='$(git_custom_status)$(node_prompt_version)$(ruby_prompt_version)[%D{%H:%M:%S}] $EPS1'
