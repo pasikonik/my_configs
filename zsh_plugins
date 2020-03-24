@@ -8,4 +8,5 @@ plugins=(
   systemd
   ember-cli
   archlinux
+  zsh-autosuggestions
 )
