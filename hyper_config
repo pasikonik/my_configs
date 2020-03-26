@@ -158,7 +158,8 @@ module.exports = {
     "hyper-search",
     "hyperterm-dibdabs",
     "hyper-solarized-dark2",
-    "hyper2-border"
+    "hyper2-border",
+    "hyperterm-tabs"
   ],
 
   // in development, you can create a directory under
