@@ -19,7 +19,7 @@ function node_prompt_version {
 }
 
 function ruby_prompt_version {
-  echo "%{$fg[red]%}[$(ruby -v | cut -d " " -f2)]%{$reset_color%}"
+  echo "%{$fg[red]%}[v$(ruby -e 'puts RUBY_VERSION')]%{$reset_color%}"
 }
 
 
