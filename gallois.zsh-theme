@@ -19,7 +19,7 @@ function node_prompt_version {
 }
 
 function ruby_prompt_version {
-  echo "%{$fg[red]%}$(ruby_prompt_info | sed 's/(ruby-/[v/' | sed 's/)/]/' )%{$reset_color%}"
+  echo "%{$fg[red]%}[$(ruby -v | cut -d " " -f2)]%{$reset_color%}"
 }
 
 
