@@ -9,4 +9,5 @@ plugins=(
   ember-cli
   archlinux
   zsh-autosuggestions
+  zsh-syntax-highlighting
 )
