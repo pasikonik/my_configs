@@ -19,7 +19,9 @@ function node_prompt_version {
 }
 
 function ruby_prompt_version {
-  echo "%{$fg[red]%}[v$(ruby -e 'puts RUBY_VERSION')]%{$reset_color%}"
+  if which ruby &> /dev/null; then
+  	echo "%{$fg[red]%}[v$(ruby -e 'puts RUBY_VERSION')]%{$reset_color%}"
+  fi
 }
 
 
