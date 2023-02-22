@@ -53,11 +53,11 @@ format = '\[$symbol[$ram( | $swap)]($style)\]'
 
 [nodejs]
 style = 'green'
-format = '[\[$symbol($version)\]]($style)'
+format = '[\[$version\]]($style)'
 
 [ruby]
 style = 'red'
-format = '[\[$symbol($version)\]]($style)'
+format = '[\[$version\]]($style)'
 
 [rust]
 format = '\[[$symbol($version)]($style)\]'
