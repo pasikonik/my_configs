@@ -1,11 +1,12 @@
 plugins=(
   git
-  ruby
-  bundler
   nvm
+  asdf
   node
   yarn
+  ruby
   pnpm
+  bundler
   systemd
   archlinux
   zsh-autosuggestions
