@@ -1,0 +1,40 @@
+{
+	"Print to console": {
+		"prefix": "clog",
+		"body": [
+			"console.log('$1');",
+			"$2"
+		],
+		"description": "Log output to console JS"
+	},
+	"Vue Single File Component with Typescript": {
+		"prefix": "vbase",
+		"body": [
+			"<script setup lang=\"ts\">",
+			"$1",
+			"</script>",
+			"",
+			"<template>",
+			"  $2",
+			"</template>",
+			"",
+			"<style scoped lang=\"sass\">",
+			"$3",
+			"</style>"
+		],
+		"description": "Base for Vue File with Typescript"
+	},
+	"Vue Single File Component with Typescript without Style tag": {
+		"prefix": "base",
+		"body": [
+			"<script setup lang=\"ts\">",
+			"$1",
+			"</script>",
+			"",
+			"<template>",
+			"  $2",
+			"</template>",
+		],
+		"description": "Unstyled base for Vue File with Typescript"
+	},
+}
