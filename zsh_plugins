@@ -9,6 +9,7 @@ plugins=(
   bundler
   systemd
   archlinux
+  alias-tips
   zsh-autosuggestions
   zsh-syntax-highlighting
 )
