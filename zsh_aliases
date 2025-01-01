@@ -4,10 +4,14 @@ alias rc="rails console"
 alias ru="rubocop"
 alias rsp="rspec"
 alias y="yarn"
-alias ys="yarn serve"
 alias n="npm"
+alias bn="babel-node"
 alias gtfo="rm -rf node_modules dist tmp && yarn install"
 alias v="vue"
+alias ys="yarn serve"
+alias h="hanami"
+alias hs="hanami server"
+alias hc="hanami console"
 alias yn="yay -Sl | rg "
 alias cl="clear"
 alias gbr="git branch | grep -v "master" | xargs git branch -D"
@@ -15,5 +19,75 @@ alias de="ddcutil setvcp 10"
 alias pout="pnpm outdated"
 alias tr="trans :pl"
 alias rtr="trans pl:en"
-alias ls="eza"
-alias ll="eza -l"
+alias yt="yt-dlp"
+alias wen="whisper --model medium.en --language en --output_format txt --task transcribe"
+alias wpl="whisper --model medium --language pl --output_format txt --task transcribe"
+alias p="phoronix-test-suite"
+alias pb="phoronix-test-suite benchmark"
+alias phoronix-full='phoronix-test-suite batch-benchmark suite=all'
+
+if (( $+commands[yay] )); then
+  alias yaconf='yay -Pg'
+  alias yaclean='yay -Sc'
+  alias yaclr='yay -Scc'
+  alias yaupg='yay -Syu'
+  alias yasu='yay -Syu --noconfirm'
+  alias yain='yay -S'
+  alias yains='yay -U'
+  alias yare='yay -R'
+  alias yarem='yay -Rns'
+  alias yarep='yay -Si'
+  alias yareps='yay -Ss'
+  alias yaloc='yay -Qi'
+  alias yalocs='yay -Qs'
+  alias yalst='yay -Qe'
+  alias yaorph='yay -Qtd'
+  alias yainsd='yay -S --asdeps'
+  alias yamir='yay -Syy'
+  alias yaupd="yay -Sy"
+fi
+
+
+conm() {
+    if [[ -z "$1" ]]; then
+        echo "Usage: conm input_file.webm"
+        return 1
+    fi
+    ffmpeg -i "$1" -c:v libx264 -c:a aac -f mp4 "${1%.*}.mp4"
+}
+
+allmp4() {
+    local INPUT_DIR="${1:-$(pwd)}"
+
+    # Sprawdź, czy katalog istnieje
+    if [[ ! -d "$INPUT_DIR" ]]; then
+        echo "Błąd: Katalog $INPUT_DIR nie istnieje."
+        return 1
+    fi
+
+    # Przejdź przez wszystkie pliki .webm w katalogu
+    for file in "$INPUT_DIR"/*.webm; do
+        # Sprawdź, czy plik istnieje (przy braku plików glob zwraca nazwę wzorca)
+        if [[ ! -e "$file" ]]; then
+            echo "Brak plików .webm w katalogu $INPUT_DIR."
+            return 1
+        fi
+
+        # Stwórz nazwę pliku wyjściowego
+        local output="${file%.*}.mp4"
+
+        # Wykonaj konwersję
+        echo "Konwertuję $file -> $output"
+        ffmpeg -i "$file" -c:v libx264 -c:a aac -f mp4 "$output"
+
+        # Sprawdź status konwersji
+        if [[ $? -eq 0 ]]; then
+            echo "Sukces: $output"
+        else
+            echo "Błąd: Nie udało się przekonwertować $file"
+        fi
+    done
+
+    echo "Konwersja zakończona."
+    return 0
+}
