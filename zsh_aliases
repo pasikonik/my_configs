@@ -25,6 +25,7 @@ alias wpl="whisper --model medium --language pl --output_format txt --task trans
 alias p="phoronix-test-suite"
 alias pb="phoronix-test-suite benchmark"
 alias phoronix-full='phoronix-test-suite batch-benchmark suite=all'
+alias mirftu='sudo pacman-mirrors --fasttrack 10 && sudo pacman -Syyu'
 
 if (( $+commands[yay] )); then
   alias yaconf='yay -Pg'
