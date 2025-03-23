@@ -20,12 +20,19 @@ function node_prompt_version {
 
 function ruby_prompt_version {
   if which ruby &> /dev/null; then
-  	echo "%{$fg[red]%}[v$(ruby -e 'puts RUBY_VERSION')]%{$reset_color%}"
+    echo "%{$fg[red]%}[v$(ruby -e 'puts RUBY_VERSION')]%{$reset_color%}"
   fi
 }
 
+function python_prompt_version {
+  if which python3 &> /dev/null; then
+    echo "%{$fg[yellow]%}[$(python3 --version | awk '{print $2}')]%{$reset_color%}"
+  elif which python &> /dev/null; then
+    echo "%{$fg[yellow]%}[$(python --version | awk '{print $2}')]%{$reset_color%}"
+  fi
+}
 
 # Combine it all into a final right-side prompt
-RPS1='$(git_custom_status)$(node_prompt_version)$(ruby_prompt_version)[%D{%H:%M:%S}] $EPS1'
+RPS1='$(git_custom_status)$(node_prompt_version)$(ruby_prompt_version)$(python_prompt_version)[%D{%H:%M:%S}] $EPS1'
 
 PROMPT='%{$fg[cyan]%}[%~% ]%(?.%{$fg[green]%}.%{$fg[red]%})%B$%b '
