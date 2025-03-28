@@ -26,9 +26,9 @@ function ruby_prompt_version {
 
 function python_prompt_version {
   if which python3 &> /dev/null; then
-    echo "%{$fg[yellow]%}[$(python3 --version | awk '{print $2}')]%{$reset_color%}"
+    echo "%{$fg[yellow]%}[v$(python3 --version | awk '{print $2}')]%{$reset_color%}"
   elif which python &> /dev/null; then
-    echo "%{$fg[yellow]%}[$(python --version | awk '{print $2}')]%{$reset_color%}"
+    echo "%{$fg[yellow]%}[v$(python --version | awk '{print $2}')]%{$reset_color%}"
   fi
 }
 
