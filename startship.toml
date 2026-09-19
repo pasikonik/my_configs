@@ -1,264 +1,188 @@
-# Inserts a blank line between shell prompts
-add_newline = false
+"$schema" = 'https://starship.rs/config-schema.json'
 
-# A minimal left prompt
-format = """$directory$character"""
-
-# move the rest of the prompt to the right
-right_format = """
-$cmd_duration \
+format = """
+[](color_orange)\
+$os\
+$username\
+[](bg:color_yellow fg:color_orange)\
+$directory\
+[](fg:color_yellow bg:color_aqua)\
 $git_branch\
-$git_metrics\
 $git_status\
-$git_state\
-$memory_usage\
+[](fg:color_aqua bg:color_blue)\
+$rust\
 $nodejs\
-$ruby\
-$time"""
+$bun\
+$php\
+$java\
+$haskell\
+$python\
+[](fg:color_blue bg:color_bg3)\
+$docker_context\
+[](fg:#458588 bg:#3c3836)\
+$time\
+$cmd_duration\
+[ ](fg:color_bg1)\
+$line_break$character"""
 
-# Used modules
+palette = 'gruvbox_dark'
+
+[palettes.gruvbox_dark]
+color_fg0 = '#fbf1c7'
+color_bg1 = '#3c3836'
+color_bg3 = '#665c54'
+color_blue = '#458588'
+color_aqua = '#689d6a'
+color_green = '#98971a'
+color_orange = '#d65d0e'
+color_purple = '#b16286'
+color_red = '#cc241d'
+color_yellow = '#d79921'
+
+[os]
+disabled = false
+style = "bg:color_orange fg:color_fg0"
+
+[os.symbols]
+Windows = "󰍲"
+Ubuntu = "󰕈"
+SUSE = ""
+Raspbian = "󰐿"
+Mint = "󰣭"
+Macos = "󰀵"
+Manjaro = ""
+Linux = "󰌽"
+Gentoo = "󰣨"
+Fedora = "󰣛"
+Alpine = ""
+Amazon = ""
+Android = ""
+AOSC = ""
+Arch = "󰣇"
+Artix = "󰣇"
+EndeavourOS = ""
+CentOS = ""
+Debian = "󰣚"
+Redhat = "󱄛"
+RedHatEnterprise = "󱄛"
+Pop = ""
+
+[username]
+show_always = true
+style_user = "bg:color_orange fg:color_fg0"
+style_root = "bg:color_orange fg:color_fg0"
+format = '[ $user ]($style)'
 
 [directory]
-style = 'cyan'
-truncate_to_repo = false
+style = "fg:color_fg0 bg:color_yellow"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
 
-[cmd_duration]
-style = 'yellow'
-min_time = 1_000
-show_milliseconds = true
-format = '[\[⏱  $duration\]]($style)'
-
-[elixir]
-format = '\[[$symbol($version \(OTP $otp_version\))]($style)\]'
-
-[erlang]
-format = '\[[$symbol($version)]($style)\]'
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = "󰝚 "
+"Pictures" = " "
+"Developer" = "󰲋 "
 
 [git_branch]
-format = '[\[$symbol$branch\]]($style)'
-
-[git_metrics]
-disabled = false
-added_style = '74'
-deleted_style = '#b50000'
-format = '\[[+$added]($added_style)/[-$deleted]($deleted_style)\]'
+symbol = ""
+style = "bg:color_aqua"
+format = '[[ $symbol $branch ](fg:color_fg0 bg:color_aqua)]($style)'
 
 [git_status]
-style = 'purple'
-format = '([\[$all_status$ahead_behind\]]($style))'
-
-[memory_usage]
-disabled = false
-format = '\[$symbol[$ram( | $swap)]($style)\]'
+style = "bg:color_aqua"
+format = '[[($all_status$ahead_behind )](fg:color_fg0 bg:color_aqua)]($style)'
 
 [nodejs]
-style = 'green'
-format = '[\[$version\]]($style)'
+symbol = ""
+style = "bg:color_blue"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
 
-[ruby]
-style = 'red'
-format = '[\[$version\]]($style)'
+[bun]
+symbol = ""
+style = "bg:color_blue"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+
+[c]
+symbol = " "
+style = "bg:color_blue"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+
+[cpp]
+symbol = " "
+style = "bg:color_blue"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
 
 [rust]
-format = '\[[$symbol($version)]($style)\]'
+symbol = ""
+style = "bg:color_blue"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
 
-[sudo]
-format = '\[[as $symbol]\]'
+[golang]
+symbol = ""
+style = "bg:color_blue"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+
+[php]
+symbol = ""
+style = "bg:color_blue"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+
+[java]
+symbol = ""
+style = "bg:color_blue"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+
+[kotlin]
+symbol = ""
+style = "bg:color_blue"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+
+[haskell]
+symbol = ""
+style = "bg:color_blue"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+
+[python]
+symbol = ""
+style = "bg:color_blue"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+
+[docker_context]
+symbol = ""
+style = "bg:color_bg3"
+format = '[[ $symbol( $context) ](fg:#83a598 bg:color_bg3)]($style)'
+
+[conda]
+style = "bg:color_bg3"
+format = '[[ $symbol( $environment) ](fg:#83a598 bg:color_bg3)]($style)'
+
+[pixi]
+style = "bg:color_bg3"
+format = '[[ $symbol( $version)( $environment) ](fg:color_fg0 bg:color_bg3)]($style)'
 
 [time]
 disabled = false
-style = '245'
-format = '[\[$time\]]($style)'
+time_format = "%-H:%M:%S"
+style = "bg:#3c3836 fg:#fbf1c7"
+format = '[[  $time ](fg:color_fg0 bg:color_bg1)]($style)'
 
-[username]
-format = '\[[$user]($style)\]'
+[line_break]
+disabled = false
 
-# custom package I guess
-[package]
-format = '\[[$symbol$version]($style)\]'
+[character]
+disabled = false
+success_symbol = '[](bold fg:color_green)'
+error_symbol = '[](bold fg:color_red)'
+vimcmd_symbol = '[](bold fg:color_green)'
+vimcmd_replace_one_symbol = '[](bold fg:color_purple)'
+vimcmd_replace_symbol = '[](bold fg:color_purple)'
+vimcmd_visual_symbol = '[](bold fg:color_yellow)'
 
-# All disabled modules
-
-[aws]
-disabled = true
-format = '\[[$symbol($profile)(\($region\))(\[$duration\])]($style)\]'
-
-[bun]
-disabled = true
-format = '\[[$symbol($version)]($style)\]'
-
-[c]
-disabled = true
-format = '\[[$symbol($version(-$name))]($style)\]'
-
-[cmake]
-disabled = true
-format = '\[[$symbol($version)]($style)\]'
-
-[cobol]
-disabled = true
-format = '\[[$symbol($version)]($style)\]'
-
-[conda]
-disabled = true
-format = '\[[$symbol$environment]($style)\]'
-
-[crystal]
-disabled = true
-format = '\[[$symbol($version)]($style)\]'
-
-[daml]
-disabled = true
-format = '\[[$symbol($version)]($style)\]'
-
-[dart]
-disabled = true
-format = '\[[$symbol($version)]($style)\]'
-
-[deno]
-disabled = true
-format = '\[[$symbol($version)]($style)\]'
-
-[docker_context]
-disabled = true
-format = '\[[$symbol$context]($style)\]'
-
-[dotnet]
-disabled = true
-format = '\[[$symbol($version)(🎯 $tfm)]($style)\]'
-
-[elm]
-disabled = true
-format = '\[[$symbol($version)]($style)\]'
-
-[gcloud]
-disabled = true
-format = '\[[$symbol$account(@$domain)(\($region\))]($style)\]'
-
-[golang]
-disabled = true
-format = '\[[$symbol($version)]($style)\]'
-
-[guix_shell]
-disabled = true
-format = '\[[$symbol]($style)\]'
-
-[haskell]
-disabled = true
-format = '\[[$symbol($version)]($style)\]'
-
-[haxe]
-disabled = true
-format = '\[[$symbol($version)]($style)\]'
-
-[helm]
-disabled = true
-format = '\[[$symbol($version)]($style)\]'
-
-[hg_branch]
-disabled = true
-format = '\[[$symbol$branch]($style)\]'
-
-[java]
-disabled = true
-format = '\[[$symbol($version)]($style)\]'
-
-[julia]
-disabled = true
-format = '\[[$symbol($version)]($style)\]'
-
-[kotlin]
-disabled = true
-format = '\[[$symbol($version)]($style)\]'
-
-[kubernetes]
-disabled = true
-format = '\[[$symbol$context( \($namespace\))]($style)\]'
-
-[lua]
-disabled = true
-format = '\[[$symbol($version)]($style)\]'
-
-[meson]
-disabled = true
-format = '\[[$symbol$project]($style)\]'
-
-[nim]
-disabled = true
-format = '\[[$symbol($version)]($style)\]'
-
-[nix_shell]
-disabled = true
-format = '\[[$symbol$state( \($name\))]($style)\]'
-
-[ocaml]
-disabled = true
-format = '\[[$symbol($version)(\($switch_indicator$switch_name\))]($style)\]'
-
-[opa]
-disabled = true
-format = '\[[$symbol($version)]($style)\]'
-
-[openstack]
-disabled = true
-format = '\[[$symbol$cloud(\($project\))]($style)\]'
-
-[os]
-disabled = true
-format = '\[[$symbol]($style)\]'
-
-[perl]
-disabled = true
-format = '\[[$symbol($version)]($style)\]'
-
-[php]
-disabled = true
-format = '\[[$symbol($version)]($style)\]'
-
-[pulumi]
-disabled = true
-format = '\[[$symbol$stack]($style)\]'
-
-[purescript]
-disabled = true
-format = '\[[$symbol($version)]($style)\]'
-
-[python]
-disabled = true
-format = '\[[${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style)\]'
-
-[raku]
-disabled = true
-format = '\[[$symbol($version-$vm_version)]($style)\]'
-
-[red]
-disabled = true
-format = '\[[$symbol($version)]($style)\]'
-
-[scala]
-disabled = true
-format = '\[[$symbol($version)]($style)\]'
-
-[spack]
-disabled = true
-format = '\[[$symbol$environment]($style)\]'
-
-[swift]
-disabled = true
-format = '\[[$symbol($version)]($style)\]'
-
-[terraform]
-disabled = true
-format = '\[[$symbol$workspace]($style)\]'
-
-[vagrant]
-disabled = true
-format = '\[[$symbol($version)]($style)\]'
-
-[vlang]
-disabled = true
-format = '\[[$symbol($version)]($style)\]'
-
-[zig]
-disabled = true
-format = '\[[$symbol($version)]($style)\]'
+[cmd_duration]
+min_time = 500
+show_milliseconds = true
+style = "bg:#3c3836 fg:#fbf1c7"
+format = "[ ⏱ $duration ]($style)"
